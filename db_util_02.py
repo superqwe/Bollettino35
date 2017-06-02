@@ -31,6 +31,7 @@ ANNI_AL = 2016
 # obsoleti
 ###############################################################################
 
+
 def popola_orario2(db, dal=None, al=None):
     """obsoleto"""
 
@@ -318,7 +319,7 @@ def popola_annuale(db, dal=None, al=None):
 
 
 def interroga(tabella, dal, al, campi=[], dati_orari=True):
-    '''obsoleto'''
+    """obsoleto"""
     db = DB.DB()
     rec = db.interroga(tabella, dal, al, campi, dati_orari).fetchall()
     return rec
@@ -326,6 +327,7 @@ def interroga(tabella, dal, al, campi=[], dati_orari=True):
 ###############################################################################
 # fine obsoleti
 ###############################################################################
+
 
 def interroga2(db, tabella, dal, al=None, campi=[], solo_orari=True, senza_data=False, somma=False):
     if campi:
@@ -485,7 +487,6 @@ def popola_effemeridi():
     db.db.commit()
 
 
-
 if __name__ == '__main__':
     db = DB.DB()
     db.crea_db()
@@ -509,5 +510,3 @@ if __name__ == '__main__':
     # inserisci_mese(db, '1701m.TXT')
 
     # popola_effemeridi()
-
-

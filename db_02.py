@@ -11,7 +11,6 @@
 # 11.02.17: tabella pioggia
 
 import datetime
-import os
 import sqlite3 as lite
 
 from pprint import pprint as pp
@@ -21,6 +20,7 @@ import leggi_csv_01 as leggi_csv
 from util_00 import direzione_vento_orario
 
 NOME_DB = 'test.sqlite'
+
 
 class DB(object):
     def __init__(self):
@@ -125,8 +125,6 @@ class DB(object):
         except lite.OperationalError:
             print('problemi su tabella: Pioggia')
 
-
-
     def interroga(self, tabella, dal, al=None, campi=[], solo_orari=True):
         if campi:
             campi = list(campi)
@@ -176,5 +174,3 @@ if __name__ == '__main__':
     db = DB()
     db.crea_db()
     # db.ricrea_db()
-
-

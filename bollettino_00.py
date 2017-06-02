@@ -3,7 +3,6 @@
 # 11.02.17: pioggia da correggere la fine pioggia alle 23.59.00
 
 import datetime
-import time
 
 from pprint import pprint as pp
 
@@ -11,8 +10,7 @@ import db_02 as DB
 
 
 MESE = '2017-03'
-DH_MIN = datetime.timedelta(1.0 / 24 / 60 * 30)  # intervallo di tempo minimo tra la fine di una pioggia e
-                                                # l'inizio di un'altra
+DH_MIN = datetime.timedelta(1.0 / 24 / 60 * 30)  # intervallo di tempo minimo tra la fine di una pioggia e l'inizio di un'altra
 
 
 def pioggia(db, mese):
@@ -88,7 +86,6 @@ def pioggia2(db, mese):
             al0 = al
             mm0 = mm
 
-
     rigo = '{:02d}\t{:%H:%M:%S}\t{:%H:%M:%S}\t{:.1f}'.format(g0, dal0, al0, mm0)
     print(rigo)
     rec = (g0, dal0, al0, mm0, '%s' % (al0 - dal0))
@@ -155,7 +152,7 @@ WHERE data = '{}'
 
             mm += xmm
             minuti = int(ymm.split(':')[0]) * 60 + int(ymm.split(':')[1])
-            dmm+= datetime.timedelta(minutes=minuti)
+            dmm += datetime.timedelta(minutes=minuti)
 
         ddati = {'data': data, 'pres': pres, 't': t, 'tmin': tmin, 'tmax': tmax, 'ur': ur, 'vdir': vdir, 'vvel': vvel,
                  'cielo': cielo, 'mm': mm, 'dmm': str(dmm).zfill(8)}

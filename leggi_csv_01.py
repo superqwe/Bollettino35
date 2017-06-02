@@ -1,11 +1,12 @@
-## 11.12.16: 00
-## 10.02.17: 01 per aggiornamento tabelle db
+# 11.12.16: 00
+# 10.02.17: 01 per aggiornamento tabelle db
 #            leggi_effemeridi, leggi_effemeridi2
 
 import csv
 import datetime
 
 from pprint import pprint as pp 
+
 
 class Record(object):
     def __init__(self, data):
@@ -25,6 +26,7 @@ class Record(object):
 
         return ldati
     
+
 def leggi_csv(fin):
     with open(fin) as f:
         reader = csv.DictReader(f, delimiter=';')
@@ -34,7 +36,7 @@ def leggi_csv(fin):
             giorno = row['GIORNO']
             ora = '23.59' if row['ORA'] == '24.00' else row['ORA']
 
-            data ='%s %s' % (giorno, ora)
+            data = '%s %s' % (giorno, ora)
             try:
                 data = datetime.datetime.strptime(data, '%d/%m/%Y %H.%M')
             except ValueError:
@@ -73,7 +75,7 @@ def leggi_effemeridi(fin):
 
                     rigo = tr.split('<td class="n12" align="center">')
                     giorno = (rigo[1][:-8])
-                    sorge =  (rigo[2][:-6]).split('h')
+                    sorge = (rigo[2][:-6]).split('h')
                     sorge = int(sorge[0]) * 60 + int(sorge[1])
                     tramonta = (rigo[6][:-6]).split('h')
                     tramonta = int(tramonta[0]) * 60 + int(tramonta[1])
@@ -81,6 +83,7 @@ def leggi_effemeridi(fin):
                     durata_di.append([giorno, tramonta-sorge])
 
     return durata_di
+
 
 def leggi_effemeridi2():
     effemeridi = []

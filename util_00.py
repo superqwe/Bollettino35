@@ -6,13 +6,14 @@ import datetime
 import math
 from pprint import pprint as pp
 
+
 def direzione_vento_G2PC(velocita, direzione):
-    '''converte la direzione del vento da gradi a punto cardinale'''
-    if velocita *3.6 <= 5.0:
+    """converte la direzione del vento da gradi a punto cardinale"""
+    if velocita * 3.6 <= 5.0:
         direzione = 'C'
 
     else:
-        if 360.0 - 22.5 < direzione or 0 <= direzione < 0.0 + 22.5:
+        if 360.0 - 22.5 < direzione or 0.0 <= direzione < 0.0 + 22.5:
             direzione = 'N'
         elif 45.0-22.5 < direzione < 45.0+22.5:
             direzione = 'NE'
@@ -30,6 +31,7 @@ def direzione_vento_G2PC(velocita, direzione):
             direzione = 'NO'
 
     return direzione
+
 
 def direzione_vento_orario(db, dati):
     al = datetime.datetime.strptime(dati[0], '%Y-%m-%d %H:%M:%S')
@@ -52,7 +54,8 @@ def direzione_vento_orario(db, dati):
         direzioni = [x[1] for x in odati]
         direzione = direzione_dominante(direzioni)
 
-    return  velocita, direzione
+    return velocita, direzione
+
 
 def direzione_dominante(direzioni):
     punti_cardinali = ('N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO')
@@ -70,6 +73,7 @@ def direzione_dominante(direzioni):
         dominante = dominante[0][1]
 
     return dominante
+
 
 def vento_analisi(dati):
     """[(v1, d1), (v2, d2), ...] --> velocita_media, direzione_dominate"""
@@ -93,4 +97,3 @@ def vento_analisi(dati):
 
 if __name__ == '__main__':
     pass
-
